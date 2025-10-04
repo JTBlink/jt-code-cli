@@ -9,15 +9,11 @@ set -u  # 只使用 set -u 来检测未定义变量
 # 获取当前脚本所在目录的绝对路径
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
-TARGET_DIR="$REPO_ROOT/tools/bin"
+TARGET_DIR="${HOME}/.local/bin"
 
 # 要管理的脚本列表
 SCRIPTS=(
     "jt-code.sh"
-    "claude-switch.sh"
-    "claudecode-install.sh"
-    "claude-mcp.sh"
-    "mcp-manager.sh"
 )
 
 # 打印信息函数
