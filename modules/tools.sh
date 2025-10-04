@@ -82,6 +82,14 @@ check_tool_status() {
     else
         print_warning "CodeBuddy: 未安装"
     fi
+    
+    # 检查 GitHub Copilot CLI
+    if command -v copilot >/dev/null 2>&1; then
+        local copilot_version=$(copilot --version 2>/dev/null || echo "unknown")
+        print_success "GitHub Copilot CLI: $copilot_version"
+    else
+        print_warning "GitHub Copilot CLI: 未安装"
+    fi
 }
 
 # 列出可用工具
@@ -96,6 +104,8 @@ list_tools() {
     echo "               官方网站: https://qwenlm.github.io/qwen-code-docs/"
     echo "  codebuddy    - CodeBuddy: 智能编程伴侣 (命令: cbc 或 codebuddy)"
     echo "               官方网站: https://www.codebuddy.ai/cli"
+    echo "  copilot      - GitHub Copilot CLI: GitHub AI 代码助手 (命令: copilot)"
+    echo "               官方网站: https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli"
     echo ""
     echo "使用 '$0 install <tool>' 安装工具"
     echo "使用 '$0 uninstall <tool>' 卸载工具"

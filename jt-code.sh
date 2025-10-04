@@ -24,6 +24,7 @@ source "$SCRIPT_DIR/modules/iflow.sh"
 source "$SCRIPT_DIR/modules/claude-code.sh"
 source "$SCRIPT_DIR/modules/qwen.sh"
 source "$SCRIPT_DIR/modules/codebuddy.sh"
+source "$SCRIPT_DIR/modules/copilot.sh"
 
 # 帮助信息
 show_help() {
@@ -45,18 +46,19 @@ show_help() {
     echo "                    官方网站: https://qwenlm.github.io/qwen-code-docs/"
     echo "  codebuddy         CodeBuddy 智能编程伴侣"
     echo "                    官方网站: https://www.codebuddy.ai/cli"
+    echo "  copilot           GitHub Copilot CLI 工具"
+    echo "                    官方网站: https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli"
     echo "  all               所有工具"
     echo ""
     echo "选项:"
     echo "  -h, --help        显示此帮助信息"
     echo ""
     echo "示例:"
-    echo "  # 安装 GitHub Copilot CLI (参考官方文档)"
-    echo "  npm install -g @github/copilot"
     echo "  $SCRIPT_NAME install iflow          # 安装 iFlow"
     echo "  $SCRIPT_NAME install claude-code    # 安装 Claude Code"
     echo "  $SCRIPT_NAME install qwen           # 安装 Qwen Code"
     echo "  $SCRIPT_NAME install codebuddy      # 安装 CodeBuddy"
+    echo "  $SCRIPT_NAME install copilot        # 安装 GitHub Copilot CLI"
     echo "  $SCRIPT_NAME install all            # 安装所有工具"
     echo "  $SCRIPT_NAME uninstall iflow        # 卸载 iFlow"
     echo "  $SCRIPT_NAME upgrade iflow          # 升级 iFlow"
@@ -89,11 +91,15 @@ main() {
                 codebuddy)
                     install_codebuddy
                     ;;
+                copilot)
+                    install_copilot
+                    ;;
                 all)
                     install_iflow
                     install_claude_code
                     install_qwen
                     install_codebuddy
+                    install_copilot
                     ;;
                 *)
                     print_error "未知的工具: $2"
@@ -117,11 +123,15 @@ main() {
                 codebuddy)
                     uninstall_codebuddy
                     ;;
+                copilot)
+                    uninstall_copilot
+                    ;;
                 all)
                     uninstall_iflow
                     uninstall_claude_code
                     uninstall_qwen
                     uninstall_codebuddy
+                    uninstall_copilot
                     ;;
                 *)
                     print_error "未知的工具: $2"
@@ -145,11 +155,15 @@ main() {
                 codebuddy)
                     upgrade_codebuddy
                     ;;
+                copilot)
+                    upgrade_copilot
+                    ;;
                 all)
                     upgrade_iflow
                     upgrade_claude_code
                     upgrade_qwen
                     upgrade_codebuddy
+                    upgrade_copilot
                     ;;
                 *)
                     print_error "未知的工具: $2"
