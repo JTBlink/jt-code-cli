@@ -36,6 +36,8 @@ This file provides guidance to WARP (warp.dev) when working with code in this re
   jt-code install claude-code
   jt-code install qwen
   jt-code install codebuddy
+  jt-code install copilot
+  jt-code install gemini
 - 安装全部支持的工具：
   jt-code install all
 - 升级单个或全部工具：
@@ -72,6 +74,8 @@ This file provides guidance to WARP (warp.dev) when working with code in this re
     modules/claude-code.sh — 安装/卸载/升级 @anthropic-ai/claude-code，并写入 ~/.claude.json 的 onboarding 标记
     modules/qwen.sh   — 安装/卸载/升级 @qwen-code/qwen-code
     modules/codebuddy.sh — 安装/卸载/升级 @tencent-ai/codebuddy-code
+    modules/copilot.sh — 安装/卸载/升级 @github/copilot
+    modules/gemini.sh — 安装/卸载/升级 @google/gemini-cli
   - 分发子命令：install、uninstall、upgrade、list、status、help。
   - 对于 all 的 install/uninstall/upgrade，会依次调用各工具对应函数。
 
@@ -86,7 +90,7 @@ This file provides guidance to WARP (warp.dev) when working with code in this re
 
 - 工具辅助：modules/tools.sh
   - check_nodejs：确保 Node 存在；Node 版本 < 18 给出警告。
-  - check_tool_status：若命令存在则打印版本（node、npm、iflow、claude、qwen、cbc/codebuddy）。
+  - check_tool_status：若命令存在则打印版本（node、npm、iflow、claude、qwen、cbc/codebuddy、copilot、gemini）。
   - list_tools：输出受支持工具与使用说明。
 
 - 工具模块（基于 npm 的安装器）
@@ -94,6 +98,8 @@ This file provides guidance to WARP (warp.dev) when working with code in this re
   - modules/claude-code.sh：npm install -g @anthropic-ai/claude-code，并写入 ~/.claude.json 的 hasCompletedOnboarding 标记
   - modules/qwen.sh：npm install -g @qwen-code/qwen-code
   - modules/codebuddy.sh：npm install -g @tencent-ai/codebuddy-code
+  - modules/copilot.sh：npm install -g @github/copilot
+  - modules/gemini.sh：npm install -g @google/gemini-cli
   - 每个模块均提供 install_<tool>、uninstall_<tool>、upgrade_<tool>；升级优先尝试 npm update -g，失败则回退为卸载后重装。
 
 - MCP 工具：mcp-manager.sh

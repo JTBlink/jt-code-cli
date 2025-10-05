@@ -25,6 +25,7 @@ source "$SCRIPT_DIR/modules/claude-code.sh"
 source "$SCRIPT_DIR/modules/qwen.sh"
 source "$SCRIPT_DIR/modules/codebuddy.sh"
 source "$SCRIPT_DIR/modules/copilot.sh"
+source "$SCRIPT_DIR/modules/gemini.sh"
 
 # 帮助信息
 show_help() {
@@ -48,6 +49,8 @@ show_help() {
     echo "                    官方网站: https://www.codebuddy.ai/cli"
     echo "  copilot           GitHub Copilot CLI 工具"
     echo "                    官方网站: https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli"
+    echo "  gemini            Google Gemini CLI 工具"
+    echo "                    官方网站: https://github.com/google-gemini/gemini-cli"
     echo "  all               所有工具"
     echo ""
     echo "选项:"
@@ -59,6 +62,7 @@ show_help() {
     echo "  $SCRIPT_NAME install qwen           # 安装 Qwen Code"
     echo "  $SCRIPT_NAME install codebuddy      # 安装 CodeBuddy"
     echo "  $SCRIPT_NAME install copilot        # 安装 GitHub Copilot CLI"
+    echo "  $SCRIPT_NAME install gemini         # 安装 Google Gemini CLI"
     echo "  $SCRIPT_NAME install all            # 安装所有工具"
     echo "  $SCRIPT_NAME uninstall iflow        # 卸载 iFlow"
     echo "  $SCRIPT_NAME upgrade iflow          # 升级 iFlow"
@@ -94,12 +98,16 @@ main() {
                 copilot)
                     install_copilot
                     ;;
+                gemini)
+                    install_gemini
+                    ;;
                 all)
                     install_iflow
                     install_claude_code
                     install_qwen
                     install_codebuddy
                     install_copilot
+                    install_gemini
                     ;;
                 *)
                     print_error "未知的工具: $2"
@@ -126,12 +134,16 @@ main() {
                 copilot)
                     uninstall_copilot
                     ;;
+                gemini)
+                    uninstall_gemini
+                    ;;
                 all)
                     uninstall_iflow
                     uninstall_claude_code
                     uninstall_qwen
                     uninstall_codebuddy
                     uninstall_copilot
+                    uninstall_gemini
                     ;;
                 *)
                     print_error "未知的工具: $2"
@@ -158,12 +170,16 @@ main() {
                 copilot)
                     upgrade_copilot
                     ;;
+                gemini)
+                    upgrade_gemini
+                    ;;
                 all)
                     upgrade_iflow
                     upgrade_claude_code
                     upgrade_qwen
                     upgrade_codebuddy
                     upgrade_copilot
+                    upgrade_gemini
                     ;;
                 *)
                     print_error "未知的工具: $2"
