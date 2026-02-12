@@ -98,6 +98,14 @@ check_tool_status() {
     else
         print_warning "Google Gemini CLI: 未安装"
     fi
+
+    # 检查 OpenCode
+    if command -v opencode >/dev/null 2>&1; then
+        local opencode_version=$(opencode --version 2>/dev/null || echo "unknown")
+        print_success "OpenCode: $opencode_version"
+    else
+        print_warning "OpenCode: 未安装"
+    fi
 }
 
 # 列出可用工具
@@ -116,6 +124,8 @@ list_tools() {
     echo "               官方网站: https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli"
     echo "  gemini       - Google Gemini CLI: Google AI 代码助手 (命令: gemini)"
     echo "               官方网站: https://github.com/google-gemini/gemini-cli"
+    echo "  opencode     - OpenCode: 开源 AI 编程代理 (命令: opencode)"
+    echo "               官方网站: https://opencode.ai"
     echo ""
     echo "使用 '$0 install <tool>' 安装工具"
     echo "使用 '$0 uninstall <tool>' 卸载工具"

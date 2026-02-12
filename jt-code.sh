@@ -26,6 +26,7 @@ source "$SCRIPT_DIR/modules/qwen.sh"
 source "$SCRIPT_DIR/modules/codebuddy.sh"
 source "$SCRIPT_DIR/modules/copilot.sh"
 source "$SCRIPT_DIR/modules/gemini.sh"
+source "$SCRIPT_DIR/modules/opencode.sh"
 
 # 帮助信息
 show_help() {
@@ -51,6 +52,8 @@ show_help() {
     echo "                    官方网站: https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli"
     echo "  gemini            Google Gemini CLI 工具"
     echo "                    官方网站: https://github.com/google-gemini/gemini-cli"
+    echo "  opencode          OpenCode AI 编程助手"
+    echo "                    官方网站: https://opencode.ai"
     echo "  all               所有工具"
     echo ""
     echo "选项:"
@@ -101,6 +104,9 @@ main() {
                 gemini)
                     install_gemini
                     ;;
+                opencode)
+                    install_opencode
+                    ;;
                 all)
                     install_iflow
                     install_claude_code
@@ -108,6 +114,7 @@ main() {
                     install_codebuddy
                     install_copilot
                     install_gemini
+                    install_opencode
                     ;;
                 *)
                     print_error "未知的工具: $2"
@@ -137,6 +144,9 @@ main() {
                 gemini)
                     uninstall_gemini
                     ;;
+                opencode)
+                    uninstall_opencode
+                    ;;
                 all)
                     uninstall_iflow
                     uninstall_claude_code
@@ -144,6 +154,7 @@ main() {
                     uninstall_codebuddy
                     uninstall_copilot
                     uninstall_gemini
+                    uninstall_opencode
                     ;;
                 *)
                     print_error "未知的工具: $2"
@@ -173,6 +184,9 @@ main() {
                 gemini)
                     upgrade_gemini
                     ;;
+                opencode)
+                    upgrade_opencode
+                    ;;
                 all)
                     upgrade_iflow
                     upgrade_claude_code
@@ -180,6 +194,7 @@ main() {
                     upgrade_codebuddy
                     upgrade_copilot
                     upgrade_gemini
+                    upgrade_opencode
                     ;;
                 *)
                     print_error "未知的工具: $2"

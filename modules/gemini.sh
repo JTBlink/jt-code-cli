@@ -49,23 +49,23 @@ uninstall_gemini() {
 # 升级 Google Gemini CLI
 upgrade_gemini() {
     print_info "正在升级 Google Gemini CLI..."
-    
+
     # 检查 Node.js
     if ! check_nodejs; then
         return 1
     fi
-    
+
     # 检查是否已安装
     if ! command -v gemini >/dev/null 2>&1; then
         print_warning "Google Gemini CLI 未安装，请先安装"
         return 1
     fi
-    
+
     # 获取当前版本
     local current_version=$(gemini --version 2>/dev/null || echo "unknown")
     print_info "当前版本: $current_version"
-    
-    # 尝试升级 Google Gemini CLI
+
+    # 尝试 upgrade Google Gemini CLI
     print_info "正在尝试升级..."
     if execute_command "npm update -g @google/gemini-cli" "suppress"; then
         local new_version=$(gemini --version 2>/dev/null || echo "unknown")
@@ -76,17 +76,13 @@ upgrade_gemini() {
         fi
         return 0
     fi
-    
-    print_warning "升级失败，尝试手动清理后重新安装..."
-    
-    # 强制重新安装
-    print_info "正在卸载 Google Gemini CLI..."
-    execute_command "npm uninstall -g @google/gemini-cli" "suppress"
-    
-    print_info "正在安装最新版本的 Google Gemini CLI..."
+
+    # If npm update fails, try reinstalling
+    print_info "npm update 失败，尝试重新安装..."
     if execute_command "npm install -g @google/gemini-cli"; then
         local new_version=$(gemini --version 2>/dev/null || echo "unknown")
         print_success "Google Gemini CLI 重新安装成功: $new_version"
+        return 0
     else
         print_error "Google Gemini CLI 重新安装失败"
         return 1

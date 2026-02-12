@@ -34,11 +34,12 @@
 `jt-code-cli` 是一个统一的 AI 开发工具管理器，帮助开发者轻松管理以下 AI 开发工具：
 
 - **iFlow CLI** - @iflow-ai/iflow-cli
-- **Claude Code** - @anthropic-ai/claude-code  
+- **Claude Code** - @anthropic-ai/claude-code
 - **Qwen Code** - @qwen-code/qwen-code
 - **CodeBuddy** - @tencent-ai/codebuddy-code
 - **GitHub Copilot** - @github/copilot
 - **Gemini CLI** - @google/gemini-cli
+- **OpenCode** - opencode-ai
 
 ## ✨ 核心功能
 
@@ -156,6 +157,7 @@ jt-code-cli/
 | CodeBuddy | @tencent-ai/codebuddy-code | 腾讯 AI 代码助手 |
 | GitHub Copilot | @github/copilot | GitHub AI 编程助手 |
 | Gemini CLI | @google/gemini-cli | Google Gemini AI 命令行工具 |
+| OpenCode | opencode-ai | 开源 AI 编程代理 |
 
 ## 🤝 贡献指南
 
